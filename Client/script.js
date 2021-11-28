@@ -16,6 +16,10 @@ socket.on('user-joined', name => {
     appendMessage(name + " joined.");
 })
 
+socket.on('send-server-message', output => {
+    appendMessage(output);
+})
+
 socket.on("connect", () => {
     console.log(socket.id)
 })
