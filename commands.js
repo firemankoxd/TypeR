@@ -30,5 +30,5 @@ function duel(player, obet) {
 }
 
 function garbage(player) {
-    console.log('Hracovi ' + player + ' padol konsky kokot')
+    console.log('Hracovi ' + player + ' nic nepadlo')
 }
