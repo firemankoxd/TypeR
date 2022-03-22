@@ -1,21 +1,15 @@
 export function checkCommand(user, s) {
     let array = s.split(' ')
     let commandName = array[0].substring(1)
+    if (!(commandName in commands))
+        return "Zadany prikaz neexistuje!"
     let str = ''
-    if(commandName in commands)
-        return "JES PICO"
     if(array.length <= 1) {
-        let tmp = []
-        tmp.push(user)
-        // str = runFunction(commandName, tmp);
-        
+        return commands[commandName](user)
     } else {
-        let functionName = array[0]
         array.shift()
-        array.unshift(user)
-        // str = runFunction(functionName.substring(1), array)
+        return commands[commandName](user, array)
     }
-    return str
 }
 
 var commands = {
