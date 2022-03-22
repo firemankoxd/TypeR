@@ -3,12 +3,11 @@ export function checkCommand(user, s) {
     let commandName = array[0].substring(1)
     if (!(commandName in commands))
         return "Zadany prikaz neexistuje!"
-    let str = ''
     if(array.length <= 1) {
         return commands[commandName](user)
     } else {
         array.shift()
-        return commands[commandName](user, array)
+        return commands[commandName](user, ...array)
     }
 }
 
