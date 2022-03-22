@@ -29,11 +29,12 @@ io.on('connection', socket => {
     socket.on('send-chat-message' , message => {
         let user = users[socket.id]
         if(message.startsWith("-")) {
-            output = checkCommand(user, message)
-            socket.broadcast.emit('send-server-message', output)
+            socket.broadcast.emit('send-server-message', checkCommand(user, message))
         }
         socket.broadcast.emit('chat-message', { 
             message: message, 
             name: users[socket.id]})
     })
 })
+
+// npm start nodemon server.js
