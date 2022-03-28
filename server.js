@@ -24,17 +24,18 @@ console.log('Server starts on port 3000');
 io.on('connection', socket => {
     socket.on('new-user', name => {
         users[socket.id] = name
-        socket.broadcast.emit('user-joined', name)
+        io.emit('user-joined', name)
     })
     socket.on('send-chat-message' , message => {
         let user = users[socket.id]
-        if(message.startsWith("-")) {
-            socket.broadcast.emit('send-server-message', checkCommand(user, message))
-        }
-        socket.broadcast.emit('chat-message', { 
+        io.emit('chat-message', { 
             message: message, 
             name: users[socket.id]})
+        if(message.startsWith("-"))
+            io.emit('send-server-message', checkCommand(user, message))
     })
 })
 
 // npm start nodemon server.js
+// https://socket.io/docs/v3/broadcasting-events/
+// https://github.com/socketio/socket.io/issues/2168

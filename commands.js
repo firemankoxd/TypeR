@@ -1,8 +1,9 @@
 export function checkCommand(user, s) {
     let array = s.split(' ')
-    let commandName = array[0].substring(1)
+    let commandName = array[0].substring(1).toLowerCase()
     if (!(commandName in commands))
         return "Zadany prikaz neexistuje!"
+        // TODO: Vypis ze prikaz neexistuje len pre jednotlivca
     if(array.length <= 1) {
         return commands[commandName](user)
     } else {
@@ -12,6 +13,15 @@ export function checkCommand(user, s) {
 }
 
 var commands = {
-    duel:function(hrac1, hrac2) {return `Hrac ${hrac1} zautocil na hraca ${hrac2}`},
-    garbage:function(player) { return `Hracovi ${player} nic nepadlo.`}
+    duel: function(hrac1, hrac2) {
+        // DB THINGS
+        return `Hrac ${hrac1} zautocil na hraca ${hrac2}`
+    },
+    garbage: function(player) { 
+        // DB THINGS
+        return `Hracovi ${player} nic nepadlo.`
+    },
+    help: function() {
+        return ["a", "b", "c"]
+    }
 }

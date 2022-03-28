@@ -1,0 +1,16 @@
+body {
+    font-family: monospace;
+}
+
+#message-container {
+    background-color: #303030;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 3px;
+    width: auto;
+}
+#message-container p {
+    margin: 0 10px;
+    color: #00ff1e;
+    padding: 0;
+}
