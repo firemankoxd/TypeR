@@ -2,6 +2,8 @@
 To keep the track of a progress, tasks which are done will be kept and newer unresolved tasks will be always at the bottom.
 - Show preview on VScode : `CTRL+SHIFT+V`
 
+---
+
 ##### *(tasks created 29th March 2022):*
 
 - [ ] If `!isCommand` then send to all, else send to socket
@@ -29,6 +31,8 @@ To keep the track of a progress, tasks which are done will be kept and newer unr
 - [ ] Cookies ACK popup
     - Questionable if it is needed
     - In case it is, here's the [link](https://blog.formpl.us/how-to-create-a-simple-cookie-consent-pop-up-for-your-website-dad17a174b60)
+
+---
 
 ##### *(tasks created another day):*
 - [ ] something
