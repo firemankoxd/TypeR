@@ -28,6 +28,7 @@ To keep the track of a progress, tasks which are done will be kept and newer unr
 - [ ] Command `-pagesize xx` (*Need to set that on client side?*)
 - [ ] Tips timer:
     - Some tips might be listed here later
+- [ ] HH:MM timestamp in chat
 - [ ] Cookies ACK popup
     - Questionable if it is needed
     - In case it is, here's the [link](https://blog.formpl.us/how-to-create-a-simple-cookie-consent-pop-up-for-your-website-dad17a174b60)
