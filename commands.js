@@ -22,6 +22,6 @@ var commands = {
         return `Hracovi ${player} nic nepadlo.`
     },
     help: function() {
-        return ["a", "b", "c"]
+        return ["To view all possible commands, enter -commands.", "Another line"]
     }
 }

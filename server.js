@@ -28,6 +28,7 @@ io.on('connection', socket => {
     socket.on('new-user', name => {
         users[socket.id] = name
         io.emit('user-joined', name)
+        socket.emit('send-server-message', `Welcome, ${name}! If this is your first time, do not hesitate to try command -help`)
     })
     socket.on('send-chat-message' , message => {
         let user = users[socket.id]
@@ -35,7 +36,14 @@ io.on('connection', socket => {
             message: message, 
             name: users[socket.id]})
         if(message.startsWith("-"))
-            io.emit('send-server-message', checkCommand(user, message))
+            var commandResponse = checkCommand(user, message)
+            if(commandResponse instanceof Array) {
+                commandResponse.forEach(responseItem => {
+                    io.emit('send-server-message', responseItem)
+                })
+              } else {
+                io.emit('send-server-message', commandResponse)
+              }
     })
 })
 
