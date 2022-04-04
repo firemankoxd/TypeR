@@ -22,6 +22,20 @@ var commands = {
         return `Hracovi ${player} nic nepadlo.`
     },
     help: function() {
-        return ["To view all possible commands, enter -commands.", "Another line"]
+        return ["To view all possible commands, enter -commands.", 
+                "Another line",
+                "And another"]
+    },
+    bugreport: function(reportMessage) {
+        return "";
+    },
+    playerinfo: function(playerName) {
+        return "";
+    },
+    login: function(username, password) {
+        return "";
+    },
+    register: function(username, password, passwordRepeat) {
+        return "";
     }
 }

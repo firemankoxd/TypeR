@@ -35,6 +35,10 @@ To keep the track of a progress, tasks which are done will be kept and newer unr
 
 ---
 
-##### *(tasks created another day):*
-- [ ] something
-- [ ] something else
+##### *(tasks created 4th April 2022):*
+- [ ] Add color prefixes to messages
+- [ ] Add prefix to messages:
+    - `~root\username\`
+    - `~dev\username\`
+    - `~usr\username\`
+- [ ] Add timer to commands
