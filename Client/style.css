@@ -8,9 +8,15 @@ body {
     margin: 10px;
     padding: 3px;
     width: auto;
+    /* Po překročení 200px nepůjde chat dál dolů ale přidá se scrollbar */
+    max-height: 200px;
+    overflow: scroll;
+    /* automaticky scroll pri novym elementu p */
+    overflow-anchor: auto;
 }
 #message-container p {
     margin: 0 10px;
     color: #00ff1e;
     padding: 0;
+
 }

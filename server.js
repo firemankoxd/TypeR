@@ -4,7 +4,8 @@ import express from 'express'
 import { Server } from "socket.io";
 
 dotenv.config()
-const port = process.env.PORT
+const port = 3000 //process.env.PORT
+
 const io = new Server(port, {
     cors: {
         origin: "*"
@@ -30,22 +31,31 @@ io.on('connection', socket => {
         io.emit('user-joined', name)
         socket.emit('send-server-message', `Welcome, ${name}! If this is your first time, do not hesitate to try command -help`)
     })
-    socket.on('send-chat-message' , message => {
-        let user = users[socket.id]
-        io.emit('chat-message', { 
-            message: message, 
-            name: users[socket.id]})
-        if(message.startsWith("-"))
-            var commandResponse = checkCommand(user, message)
-            if(commandResponse instanceof Array) {
+    socket.on('send-chat-message', message => {
+        if(message) { //zpráva musí něco obsahovat -> message == true
+            let user = users[socket.id];
+            io.emit('chat-message', {
+            message: message,
+            name: user
+            });
+            if (message.startsWith("-")) { //nebo cmd only
+            var commandResponse = checkCommand(user, message, socket);
+            if (commandResponse instanceof Array) {
                 commandResponse.forEach(responseItem => {
-                    io.emit('send-server-message', responseItem)
-                })
-              } else {
-                io.emit('send-server-message', commandResponse)
+                socket.emit('send-server-message', responseItem);
+                });
+            } else {
+                if (commandResponse === "Zadany prikaz neexistuje!") {
+                socket.emit('send-server-message', commandResponse);
+                } else {
+                io.emit('send-server-message', commandResponse);
+                }
               }
-    })
+            }
+        }
+    });
 })
+
 
 // npm start nodemon server.js
 // https://socket.io/docs/v3/broadcasting-events/
