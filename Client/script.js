@@ -10,6 +10,7 @@ socket.emit('new-user', name);
 socket.on('chat-message', data => {
     console.log(data)
     appendMessage(data.name + ": " +data.message)
+    scrollToBottom()
 })
 
 socket.on('user-joined', name => {
@@ -18,6 +19,7 @@ socket.on('user-joined', name => {
 
 socket.on('send-server-message', output => {
     appendMessage(output);
+    scrollToBottom()
 })
 
 socket.on("connect", () => {
@@ -36,3 +38,8 @@ function appendMessage(m) {
     mElement.textContent = m
     messageContainer.append(mElement)
 }
+
+function scrollToBottom() {
+    var element = document.getElementById("message-container");
+    element.scrollTop = element.scrollHeight;
+  }

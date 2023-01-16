@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
+    <style>
+      body {
+        background-color: #8F8F8F;
+      }
+
+      * {
+        font-family: 'VT323';
+      }
+
+      .login-box {
+        border: 3px solid black;
+        border-right: 6px solid black;
+        border-bottom: 6px solid black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fafafa;
+        width: 600px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 300px;
+      }
+
+      .login-box h1 {
+        text-align: center;
+        margin: 0;
+        padding: 50px;
+      }
+
+      .login-box input {
+        margin: 0 auto;
+        /* Add this */
+        margin-bottom: 20px;
+        padding: 12px;
+        box-sizing: border-box;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        text-align: center;
+        width: 300px;
+      }
+
+      .login-box input[type="submit"] {
+        background-color: #000000;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .form-container form {
+        display: none;
+      }
+
+      .form-container form.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .login-option {
+        margin: 0 auto;
+        margin-bottom: 20px;
+        padding: 12px;
+        box-sizing: border-box;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        text-align: center;
+        width: 300px;
+        cursor: pointer;
+      }
+    </style>
+  <body>
+    <div class="login-box">
+      <h1>Welcome to TypeR</h1>
+      <div class="form-container">
+        <div class="login-option-container">
+          <div class="login-option" onclick="showForm('login')"> Login </div>
+          <!-- login form -->
+          <form id="login">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <input type="submit" value="Log In"> <!-- TODO: překlikavání - nevim jak udělat aby bylo pěkný a intuitivní-->
+          </form>
+        </div>
+        <div class="login-option-container">
+          <div class="login-option" onclick="showForm('register')"> Register </div>
+          <!-- register form -->
+          <form id="register">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <input type="email" placeholder="Email" required>
+            <input type="submit" value="Register"> <!-- TODO: překlikavání - nevim jak udělat aby bylo pěkný a intuitivní-->
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function showForm(formId) {
+      const form = document.getElementById(formId);
+      const forms = document.querySelectorAll('form');
+      if (form.classList.contains('active')) {
+        form.classList.toggle('active');
+      } else {
+        forms.forEach(form => form.classList.remove('active'));
+        form.classList.add('active');
+      }
+    }
+  </script>
+</html>
